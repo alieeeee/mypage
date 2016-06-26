@@ -1,0 +1,26 @@
+{
+  "name": "mypage",
+  "version": "1.0.0",
+  "description": "my page",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "grunt": "^1.0.1",
+    "jquery": "^3.0.0",
+    "nodejs": "^0.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alieeeee/mypage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alieeeee/mypage/issues"
+  },
+  "homepage": "https://github.com/alieeeee/mypage#readme"
+}
