@@ -9,7 +9,15 @@
         <link href="css/custom.css" rel="stylesheet">
     </head>
     <body>
-        <h2>Put the serialized form in the two textbox down there to diff them =D</h2>
+        <h2>Put the serialized form/cookies in the two textbox down there to diff them =D</h2>
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="options" id="form" autocomplete="off" checked> form (preselected)
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="cookies" autocomplete="off"> cookies
+          </label>
+        </div>
         <table class='input_table'>
             <tr class='input'>
                 <td id='original'>
@@ -21,7 +29,7 @@
             </tr>
         </table>
 
-        <div class='compare_wrapper'> 
+        <div class='compare_wrapper'>
             <button id='compare' class="btn btn-info">Compare!</button>
         </div>
 

@@ -3,6 +3,8 @@ var main = function() {
 		$('#err').text('');
 		$('table#result tr').remove();
 
+
+
 		var string1 = $('#original textarea').val();
 		var string2 = $('#to_compare textarea').val();
 
@@ -18,7 +20,7 @@ var main = function() {
 				}
 			})
 		});
-		
+
 	});
 }
 
@@ -39,7 +41,7 @@ var insert_to_table = function(diff_object, callback) {
 		if(err) return callback(err);
 		return callback(null);
 	})
-	
+
 }
 
 var compare = function(str1, str2, callback) {
@@ -61,7 +63,7 @@ var compare = function(str1, str2, callback) {
 					result.missing.push(key);
 				} else if (form_object2[key].toString() != form_object1[key].toString()) {
 					result.different.push(key);
-				} 
+				}
 				delete form_object2[key];
 				return key_cb();
 			}, function(err){
@@ -84,12 +86,25 @@ var compare = function(str1, str2, callback) {
 
 var process_into_object = function(s, callback) {
 
-	var a = s.split('&');
+    if($('input#form').parent().hasClass('active')) {
+        var a = s.split('&');
+    }
+    else if($('input#cookies').parent().hasClass('active')) {
+        var a = s.split(';');
+    }
+	else callback('unknow compare type')
+
 	var form_object = {};
+
+    console.log(a);
 
 	async.forEachSeries(a, function(field, async_cb){
 		var key_value_pair = field.split('=');
-		if(key_value_pair.length != 2) return async_cb('Failed to parse the form');
+        console.log(key_value_pair);
+		if(key_value_pair.length < 2) return async_cb('Failed to parse the form');
+        for(var i = 2 ; i < key_value_pair.length ; i++) {
+            key_value_pair[1] += key_value_pair[i];
+        }
 		if(form_object.hasOwnProperty(key_value_pair[0])) {
 			form_object[key_value_pair[0]].push(key_value_pair[1]);
 			form_object[key_value_pair[0]] = _.sortBy(form_object[key_value_pair[0]], function(ss) {
